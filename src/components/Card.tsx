@@ -1,5 +1,5 @@
 import { Card, Text } from "react-native-paper";
-import { ViewStyle, TextStyle, Image } from "react-native";
+import type { ViewStyle, TextStyle } from "react-native";
 
 interface Props {
   item: {

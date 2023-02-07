@@ -1,12 +1,18 @@
+/* eslint-disable react-native/no-unused-styles */
 import React from "react";
 import { SafeAreaView, StyleSheet, FlatList, Text } from "react-native";
+
 import { CardSpaceship } from "../components/Card";
 import { useStarships } from "../hooks/useStarship";
 
 export const StarshipFeedScreen = () => {
   const { data, error, isLoading } = useStarships();
-  if (isLoading) return <Text>Loading...</Text>;
-  if (error) return <Text>Error</Text>;
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+  if (error) {
+    return <Text>Error</Text>;
+  }
 
   return (
     <SafeAreaView style={styles.container}>
