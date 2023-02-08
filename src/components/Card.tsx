@@ -1,15 +1,45 @@
 import { Card, Text } from "react-native-paper";
-import type { ViewStyle, TextStyle } from "react-native";
+import { ViewStyle, TextStyle, TouchableOpacity } from "react-native";
+import { Routes } from "../navigation/Routes";
+import { useNavigation } from "@react-navigation/native";
+
 
 interface Props {
-  item: {
     name: string;
     model: string;
     crew: string;
     hyperdrive_rating: string;
     cost_in_credits: string;
-  };
 }
+
+
+export const CardSpaceship = ({ name,model,crew,hyperdrive_rating,cost_in_credits }: Props) => {
+
+  const navigation = useNavigation<any>();
+
+  function navigateToStarshipDetails() {  
+    navigation.navigate(Routes.STARSHIP_DETAIL_SCREEN, { 
+      name: [name],
+      model: [model],
+      crew: [crew],
+      hyperdrive_rating: [hyperdrive_rating],
+      cost_in_credits: [cost_in_credits], });
+  }
+  
+  return (
+    <TouchableOpacity onPress={navigateToStarshipDetails}>
+      <Card style={styles.elementList}>
+        <Card.Content>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.model}>{model}</Text>
+          <Text style={styles.crew}>{crew}</Text>
+          <Text style={styles.rating}>{hyperdrive_rating}</Text>
+          <Text style={styles.cost}>{cost_in_credits}</Text>
+        </Card.Content>
+      </Card>
+    </TouchableOpacity>
+  );
+};
 
 const styles = {
   elementList: {
@@ -36,18 +66,4 @@ const styles = {
     fontSize: 14,
     marginBottom: 5,
   } as TextStyle,
-};
-
-export const CardSpaceship = ({ item }: Props) => {
-  return (
-    <Card style={styles.elementList}>
-      <Card.Content>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.model}>{item.model}</Text>
-        <Text style={styles.crew}>{item.crew}</Text>
-        <Text style={styles.rating}>{item.hyperdrive_rating}</Text>
-        <Text style={styles.cost}>{item.cost_in_credits}</Text>
-      </Card.Content>
-    </Card>
-  );
 };

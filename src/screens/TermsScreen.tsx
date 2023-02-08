@@ -4,20 +4,12 @@ import { View, Image, ScrollView } from "react-native";
 import { Appbar, Text } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+
 export const TermsScreen = () => {
-  function goBack() {
-    // We need to use the screen props `{navigation}` to navigate back
-    // it will be introduced in the next lesson `react-navigation`
-    alert("goBack pressed!");
-  }
 
   return (
     <SafeAreaProvider>
       <ScrollView>
-        <Appbar.Header>
-          <Appbar.BackAction onPress={goBack} />
-          <Appbar.Content title="Terms and Conditions" />
-        </Appbar.Header>
 
         <View style={{ padding: 32 }}>
           <Text variant="bodyMedium" style={{ marginBottom: 24 }}>

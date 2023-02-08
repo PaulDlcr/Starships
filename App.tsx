@@ -2,19 +2,20 @@
 // App.tsx
 
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { Navigator } from "./src/navigation/Navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { StarshipFeedScreen } from "./src/screens/StarshipFeedScreen";
-
-const queryClient = new QueryClient();
+const queryClient= new QueryClient();
 
 const App = () => {
   return (
-    //<LoginScreen />
-    //<TermsScreen />
-    <QueryClientProvider client={queryClient}>
-      <StarshipFeedScreen />
-    </QueryClientProvider>
+   <QueryClientProvider client={queryClient}>
+    <NavigationContainer>
+      <Navigator />
+    </NavigationContainer>
+   </QueryClientProvider> 
+    
   );
 };
 
